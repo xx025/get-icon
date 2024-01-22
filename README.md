@@ -34,6 +34,17 @@ for index in range(len(icons)):
     icon.save(save_dir=f'./icon', save_name=f'{index}')
 ```
 
+**问题**
+
+在Windows上使用 python-magic 往往会遇到一些问题，可以查看 https://github.com/ahupp/python-magic/issues/293 解决
+
+此处的建议，如果在windwos 安装出现问题，先尝试卸载 python-maigc 和 python-magic-bin, 然后重新依次安装 python-maigc 和 python-magic-bin
+```shell
+pip uninstall python-magic python-magic-bin
+pip install python-magic
+pip install python-magic-bin
+```
+
 
 
 
