@@ -26,7 +26,7 @@ def get_driver():
     return webdriver.Chrome(options=chrome_options)
 
 
-url = 'https://www.baidu.com/'
+url = 'https://github.com/'
 icons = get_icons(url, req_html_method='selenium', selenium_driver=get_driver())
 
 for index in range(len(icons)):
