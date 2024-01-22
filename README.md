@@ -1,12 +1,12 @@
 # get-icon
 
-以极高的成功率，获取网站的favicon/icon 或 apple-touch-icon图标
+以极高的成功率，获取网站的favicon/icon 或 apple-touch-icon图标，支持常见的web图片类型
 
 
 ## 安装
 
 ```bash
-pip install git+https://github.com/xx025/geticon.git
+pip install git+https://github.com/xx025/get-icon.git
 ```
 
 ## 使用案例
