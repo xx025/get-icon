@@ -11,7 +11,7 @@ setup(
         "selenium",
         "setuptools",
         "python-magic",
-        "python-magic-bin"
+        "python-magic-bin",
         "fake-useragent"
     ],
 )
