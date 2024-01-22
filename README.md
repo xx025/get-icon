@@ -1,27 +1,20 @@
 # get-icon
 
-使用以极高的成功率，获取网站的favicon/icon 和 apple-touch-icon图标
+以极高的成功率，获取网站的favicon/icon 或 apple-touch-icon图标
 
 
 ## 安装
 
 ```bash
-pip install get-icon
+pip install git+https://github.com/xx025/geticon.git
 ```
 
 ## 使用案例
 
-详见 [examples](./main.py)
-
 ```python
-import os
-
-from geticon import get_icons, get_hostname
 from selenium import webdriver
 
-# 设置代理
-os.environ['http_proxy'] = 'http://127.0.0.1:7890'
-os.environ['https_proxy'] = 'http://127.0.0.1:7890'
+from geticon import get_icons
 
 
 def get_driver():
@@ -33,46 +26,13 @@ def get_driver():
     return webdriver.Chrome(options=chrome_options)
 
 
-if __name__ == '__main__':
-    sites = [
-        'https://www.baidu.com/',
-        'https://www.github.com/',
-        'https://www.google.com/',
-        'https://www.bilibili.com/',
-        'https://www.zhihu.com/',
-        'https://www.taobao.com/',
-        'https://www.jd.com/',
-        'https://www.qq.com/',
-        'https://www.sina.com.cn/',
-        'https://www.weibo.com/',
-        'https://www.sohu.com/',
-        'https://www.tmall.com/',
-        'https://www.163.com/'
-    ]
+url = 'https://www.baidu.com/'
+icons = get_icons(url, req_html_method='selenium', selenium_driver=get_driver())
 
-    down_items = []
-    save_dir = './icons'
-
-    for site in sites:
-        save_folder = get_hostname(site)
-        url = site
-        down_items.append((url, save_folder))
-
-    for url, save_folder in down_items:
-        icons = get_icons(url, req_html_method='selenium', selenium_driver=get_driver())
-        for icon in icons:
-            icon.save(save_dir=f'{save_dir}/{save_folder}')
-
-    # 检查文件夹是否下载完成
-    for _, save_folder in down_items:
-        print(f'{save_dir}/{save_folder} 下载完成')
-        print(f'文件数量：{len(os.listdir(f"{save_dir}/{save_folder}"))}')
-        print()
+for index in range(len(icons)):
+    icon = icons[index]
+    icon.save(save_dir=f'./icon', save_name=f'{index}')
 ```
-
-
-
-
 
 
 
